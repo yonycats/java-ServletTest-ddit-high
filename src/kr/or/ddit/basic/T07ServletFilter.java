@@ -30,13 +30,13 @@ public class T07ServletFilter implements Filter{
       - 이미지 변환 필터 등
  */
 	
-	// console 창에서 실행시켰다가 중지시키면, 서버는 올라가지만 종료될 때 강제종료가 되기 때문에
+	// console 창에서 실행시켰다가 중지시키면, 서버는 올라가지만 종료할 때 강제종료가 되기 때문에
 	// destroy()를 거치지 않는다. destroy() 실행을 확인하고 싶다면
 	// 서버를 실행시켰다가 서버창에서 종료할 것                                                                                                                                                                                                           
 
-	
-	// 필터가 제거될 때 사용 : 처리하고 싶은 작업이 있을 때
 	// 필터에서 가장 중요한 메서드 : doFilter()
+	
+	// destroy() : 필터가 제거될 때 사용, 필터를 거칠 때 처리하고 싶은 작업이 있으면 사용한다.
 	@Override
 	public void destroy() {
 		// 필터 객체가 컨테이너로부터 제거되기 전에 호출됨
@@ -65,6 +65,9 @@ public class T07ServletFilter implements Filter{
 		System.out.println("[T07ServletFilter] init() 호출됨");
 		
 		// 초기화 파라미터 정보 -> 반드시 사용은 아니며 선택
+		// 필터 객체가 생성 및 초기화 될 때 최초에 한번 실행
+		// FilterConfig 객체를 통해 web.xml에서 설정해둔 설정 값들을 가져올 수 있다.
+		// https://dololak.tistory.com/606
 		String initParam = filterConfig.getInitParameter("init-param");
 		
 		System.out.println("init-param : " + initParam);

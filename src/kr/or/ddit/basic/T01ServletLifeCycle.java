@@ -20,7 +20,7 @@ public class T01ServletLifeCycle extends HttpServlet{
 		System.out.println("T01ServletLifeCycle 생성자 호출됨.");
 	}
 	
-	
+	 
 	// 처음 실행할 때 1번만 실행됨
 	// 1번만 호출되는 작업들을 넣으면 됨
 	@Override
