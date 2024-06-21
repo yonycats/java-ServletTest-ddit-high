@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>ServletTest</display-name>
+  
+<!--   http://localhost:8888/ServletTest/formdata.html -->
+<!-- 여기서 ServletTest는 애플리케이션 이름이라고 보면 됨 -->
+  
+  
+<!-- 	웹 브라우저에서 해당 프로젝트의 서블릿에 요청을 보내면, 해당 프로젝트의 web.xml로 자동으로 연결된다. -->
+<!--   	웹 요청시에 이렇게 하기로 정해진 규약임 -->
+<!--   	넘어가는 경로는 웹 브라우저 요청 -> web.xml에서 받아서 해당 서블렛 클래스로 연결 -> 해당 클래스에서 요청 처리 순 -->
+  
+<!--  	서블릿 실제 저장 위치에 연결해주기 -->
+ 	<servlet>
+<!--  		servlet의 별칭이기 때문에 임의로 바꿔주어도 됨. -->
+ 		<servlet-name>T01ServletLifeCycle</servlet-name>
+<!--  		해당 서블렛의 실제 저장 위치를 나타냄 -->
+ 		<servlet-class>kr.or.ddit.basic.T01ServletLifeCycle</servlet-class>
+<!--  		로딩되는 순서를 지정하는 것 -->
+ 		<load-on-startup>3</load-on-startup>
+ 	</servlet>
+ 	
+<!--  	서블릿이 언제 실행할지 지정해줌 -->
+<!--  	<servle>t과 웹 브라우저에서 검색될 url을 연결해줌 -->
+ 	<servlet-mapping>
+<!-- 		별칭 : <servlet>의 <servlet-name>과 같은 값이 들어가야 함 -->
+ 		<servlet-name>T01ServletLifeCycle</servlet-name>
+<!--  		해당 servlet의 경로를 간단히 나타내주는 것, 이런  url주소가 들어오면 여기로 와라-->
+<!-- 		웹 브라우저 주소창에 입력될 경로 주소를 나타냄, T01로 검색할거라면 /T01이라고 쓰면 됨 -->
+		<url-pattern>/T01ServletLifeCycle</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<servlet>
+ 		<servlet-name>T02ServletTest</servlet-name>
+ 		<servlet-class>kr.or.ddit.basic.T02ServletTest</servlet-class>
+ 		<load-on-startup>1</load-on-startup>
+ 	</servlet>
+ 	<servlet-mapping>
+ 	 	<servlet-name>T02ServletTest</servlet-name>
+		<url-pattern>/T02ServletTest</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<servlet>
+ 		<servlet-name>T03ServletParameterTest</servlet-name>
+ 		<servlet-class>kr.or.ddit.basic.T03ServletParameterTest</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+ 		<servlet-name>T03ServletParameterTest</servlet-name>
+ 		<url-pattern>/T03ServletParameterTest</url-pattern>
+ 	</servlet-mapping>
+ 	 	
+ 	
+ 	<servlet>
+ 		<servlet-name>T04ServletCookieTest</servlet-name>
+ 		<servlet-class>kr.or.ddit.basic.T04ServletCookieTest</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+ 		<servlet-name>T04ServletCookieTest</servlet-name>
+ 		<url-pattern>/T04ServletCookieTest</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<servlet>
+ 		<servlet-name>T05ServletSessionTest</servlet-name>
+ 		<servlet-class>kr.or.ddit.basic.T05ServletSessionTest</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+ 		<servlet-name>T05ServletSessionTest</servlet-name>
+ 		<url-pattern>/T05ServletSessionTest</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<servlet>
+ 		<servlet-name>T06ServletContextTest</servlet-name>
+ 		<servlet-class>kr.or.ddit.basic.T06ServletContextTest</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+ 		<servlet-name>T06ServletContextTest</servlet-name>
+ 		<url-pattern>/T06ServletContextTest</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<filter>
+		<filter-name>T07ServletFilter</filter-name> 	
+ 		<filter-class>kr.or.ddit.basic.T07ServletFilter</filter-class>
+ 	</filter>
+ 	<filter-mapping>
+ 		<filter-name>T07ServletFilter</filter-name>
+<!--  		모든 url 패턴의 유입을 검사함 -->
+ 		<url-pattern>/*</url-pattern>
+ 	</filter-mapping>
+ 	
+ 	
+ 	
+ 	<session-config>
+<!--  	분 단위 -->
+ 		<session-timeout>1</session-timeout>
+ 	</session-config>
+ 	
+ 	
+</web-app>
