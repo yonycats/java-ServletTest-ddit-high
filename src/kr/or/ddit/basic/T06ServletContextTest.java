@@ -13,15 +13,18 @@ public class T06ServletContextTest extends HttpServlet {
 	/*
 	 	서블릿 컨텍스트 객체에 대하여
 	 	
+	 	- 브라우저가 계속 유지되는 동안 저장해둬야할 데이터를 저장해두면 좋음, 전역변수 느낌 
+	 	
 	 	1. 서블릿 프로그램이 컨테이너와 정보를 주고받기 위한 메서드 및 유틸 기능을 제공한다.
 	 	ex) 파일의 MINE TYPE 정보 가져오기, 요청정보 보내기, 로깅 처리 등
 	 	
 	 	2. 웹 애플리케이션당 1개씩 생성된다. 전체를 대표하는 객체
 	 	
-	 	HttpServletRequest -> 요청별로 하나씩 만들어졌다가 사라짐
+	 	*** 서블릿에서 가장 중요한 객체 4개 ***
+	 	HttpServletRequest, HttpServletResponse -> 요청별로 하나씩 만들어졌다가 사라짐
 	 	HttpSession -> 브라우저별 하나씩 만들어졌다가 사라짐
 	 	ServletContext -> 애플리케이션 1개당 1개씩 만들어짐, 서비스(서버)를 시작할 때 만들어지고, 서비스(서버)가 내려가면 사라짐
-	 					    브라우저가 계속 유지되는 동안 저장해둬야할 데이터를 저장해두면 좋음, 전역변수 느낌 
+	 					    
 	 */
 	
 	@Override
@@ -32,9 +35,9 @@ public class T06ServletContextTest extends HttpServlet {
 		// 해당 메서드를 호출하면 가장 최상단의 웹 프로그램의 이름(어플리케이션의 대표 경로)가 반환된다.
 		// 어딘가에 웹 프로그램의 이름을 하드코딩할 때 해당 메서드로 불러와서 확인하고 하드코딩을 하거나
 		// web.xml 같은 곳에서 하드코딩이 아니라 메서드로 코딩하면 하드코딩할 필요가 없음
-		System.out.println("서블릿 컨텍스트의 기본 경로 : " + ctx.getContextPath()); // 제일 많이씀
+		System.out.println("서블릿 컨텍스트의 기본 경로 : " + ctx.getContextPath()); // 제일 많이씀, 대표 경로 호출
 		// 자주쓰는 메소드는 Request객체 안에 구현되어 있음
-		System.out.println("서블릿 컨텍스트의 기본 경로 : " + req.getContextPath());
+		System.out.println("서블릿 컨텍스트의 기본 경로 : " + req.getContextPath()); // 대표 경로 호출
 		
 		System.out.println("서버 정보 : " + ctx.getServerInfo());
 		System.out.println("서블릿 API의 메이저 버전 정보 : " + ctx.getMajorVersion());

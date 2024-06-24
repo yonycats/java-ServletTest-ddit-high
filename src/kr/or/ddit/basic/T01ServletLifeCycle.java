@@ -17,7 +17,7 @@ public class T01ServletLifeCycle extends HttpServlet{
 	 */
 	
 	public T01ServletLifeCycle() {
-		System.out.println("T01ServletLifeCycle 생성자 호출됨.");
+		System.out.println("[T01ServletLifeCycle] 생성자 호출됨.");
 	}
 	
 	 

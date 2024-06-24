@@ -82,6 +82,25 @@
  	</servlet-mapping>
  	
  	
+ 	<servlet>
+ 		<servlet-name>T09SessionListenerTest</servlet-name>
+ 		<servlet-class>kr.or.ddit.basic.T09SessionListenerTest</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+ 		<servlet-name>T09SessionListenerTest</servlet-name>
+ 		<url-pattern>/T09SessionListenerTest</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	
+ 	<listener>
+ 		<listener-class>kr.or.ddit.basic.MyHttpSessionListener</listener-class>
+ 	</listener>
+ 	
+ 	
+ 	
+ 	
+ 	
  	<filter>
 		<filter-name>T07ServletFilter</filter-name> 	
  		<filter-class>kr.or.ddit.basic.T07ServletFilter</filter-class>
@@ -89,6 +108,16 @@
  	<filter-mapping>
  		<filter-name>T07ServletFilter</filter-name>
 <!--  		모든 url 패턴의 유입을 검사함 -->
+ 		<url-pattern>/*</url-pattern>
+ 	</filter-mapping>
+ 	
+ 	
+ 	<filter>
+		<filter-name>T08ServletFilter</filter-name> 	
+ 		<filter-class>kr.or.ddit.basic.T08ServletFilter</filter-class>
+ 	</filter>
+ 	<filter-mapping>
+ 		<filter-name>T08ServletFilter</filter-name>
  		<url-pattern>/*</url-pattern>
  	</filter-mapping>
  	

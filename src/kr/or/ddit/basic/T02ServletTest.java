@@ -13,22 +13,32 @@ public class T02ServletTest extends HttpServlet{
 	/*
 	 	서블릿(Servlet) 동작 방식에 대하여
 	 	
-	 	1. 사용자(클라이언트)가 URL을 클릭하면 HTTP 요청 메시지를 서블릿 컨테이너로 전송한다.
+	 	1. 사용자(클라이언트)가 URL을 클릭하면 HTTP 요청 메시지를 서블릿 컨테이너로 전송한다. - 요청이 올 때 서블릿 객체가 만들어짐
+	 	   (HttpServletRequest 및 HttpServletResponse 객체를 생성함)
+	 	   
 	 	2. 서블릿 컨테이너는 web.xml에 설정된 url 패턴 정보를 확인하여 어느 서블릿을 통해 처리할 것인지를 검색한다.
 	 	   (서블릿이 컨테이너에 로딩이 안된 경우에는 먼저 생성하여 로딩 처리함. init()메서드도 호출된다.)
+	 	   
 	 	3. 서블릿 컨테이너는 요청을 처리할 개별 스레드를 생성하여 해당 서블릿 객체의 service()메서드를 호출한다.
-	 	   (HttpServletRequest 및 HttpServletResponse 객체를 생성하여 파라미터로 넘겨준다.)
+	 	
 	 	4. service() 메서드는 메서드 타입을 확인하여 적절한 메서드를 호출한다.(doGet, doPost, doPut, doDelete 등)
 	 	4-1. 동적 페이지 생성 후 ServletResponse 객체에 응답 전송
+	 	
 	 	5. 사용자의 응답 요청 처리가 완료되면, HttpServletRequest 및 HttpServletResponse 객체는 소멸된다.
 	 	   (저장한 내용들도 모두 사라짐, 유의할 것)
 	 	   - 중요한 점은 request는 응답 전까지 계속 여러번 사용할 수 있고,
 	 	   	  서블릿은 클라이언트의 요청인 request 객체를 response하기 전까지 여러 서블릿에서 계속 돌려쓸 수 있다.
+	 	   	  
 	 	6. 컨테이너로부터 서블릿이 제거되는 경우에는 destroy() 메서드가 호출된다.
 	 	
 	 	
 	 	우리가 주로 사용할 작업과 메서드는 (doGet, doPost)임, Get과 Post의 요청별 다른 응답 반환 등
 	 */
+	
+	public T02ServletTest() {
+		System.out.println("[T02ServletTest] 생성자 호출됨.");
+	}
+	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
