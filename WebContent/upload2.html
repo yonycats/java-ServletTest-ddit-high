@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>File Upload 예제</title>
+</head>
+
+<body>
+   <h3>아파치 자카르타 프로젝트의 fileupload 모듈을 이용한 파일업로드</h3>
+    <form method="post" action="upload2" enctype="multipart/form-data">
+        파일선택: <input type="file" name="uploadFile" multiple="multiple"/>
+        전송자: <input type="text" name="sender">
+        <input type="submit" value="Upload"/>
+
+    </form>
+    
+
+    <br>
+    <hr>
+
+    <h3>서블릿3부터 지원하는 Part 인터페이스를 이용한 파일업로드</h3>
+<!-- 파일 전송을 get으로 하는 경우는 매우 비정상적인 경우이기 때문에 get의 경우는 신경쓸 필요가 없음, 무시할 것 -->
+<!-- enctype="multipart/form-data" 추가 -> 디폴트 타입이 아니라 인코딩 방식으로 바디를 나누어서 전송하겠다고 지정함 -->
+
+<!-- 파일을 전송했을 때, 웹 네트워크에 Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryIKLiH7EZaLW60Kh6 -->
+<!-- -> 반드시 boundary가 있어야 함, 파트별로 데이터를 나눈다는 의미 -->
+
+<!-- multipart 방식의 내용구성
+------WebKitFormBoundaryJGA1RfdJbb19Lqu8
+Content-Disposition: form-data; name="multiPartServlet"; filename="고양이 아이콘.png"
+Content-Type: image/png
+
+�PNG
+
+
+'''''사진내용'''''
+------WebKitFormBoundaryJGA1RfdJbb19Lqu8
+Content-Disposition: form-data; name="sender"
+
+apple
+------WebKitFormBoundaryJGA1RfdJbb19Lqu8--
+ -->
+
+<!-- 파일네임이 있으면 파일이고, 없으면 일반 폼임을 확인할 수 있다.(무엇이 전달되는지 확인) -->
+<!-- Emptyline -->
+
+    <form method="post" action="/ServletTest/uploadTest" enctype="multipart/form-data">
+        파일선택: <input type="file" name="multiPartServlet"/>
+        전송자: <input type="text" name="sender">
+        <input type="submit" value="Upload"/>
+    </form>
+</body>
+</html>
